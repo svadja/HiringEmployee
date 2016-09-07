@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: HiringEmployee
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Vadim
+Implementation-Vendor-Id: ua.com.integrity
+Build-Jdk: 1.8.0_91
+Implementation-URL: http://projects.spring.io/spring-boot/HiringEmploy
+ ee/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
