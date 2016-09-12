@@ -69,7 +69,7 @@
       <bpmn:incoming>SequenceFlow_0lqvptb</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1fmk1yx</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_096mgzv" name="send mail to employee and accountant">
+    <bpmn:serviceTask id="Task_096mgzv" name="send mail to employee and accountant" camunda:delegateExpression="${hiringStartEvent}">
       <bpmn:incoming>SequenceFlow_1dkvt7f</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_19iqqyl</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -96,8 +96,12 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0005jmd" sourceRef="Task_0ja2hei" targetRef="EndEvent_0zuc3x4" />
     <bpmn:sequenceFlow id="SequenceFlow_0uithym" sourceRef="Task_0ja2hei" targetRef="Task_0kj1gvm" />
-    <bpmn:sequenceFlow id="SequenceFlow_0ufn0mk" sourceRef="ExclusiveGateway_1i8dq6z" targetRef="Task_0ja2hei" />
-    <bpmn:sequenceFlow id="SequenceFlow_1f7nqi6" sourceRef="ExclusiveGateway_1jus1w0" targetRef="Task_0ja2hei" />
+    <bpmn:sequenceFlow id="SequenceFlow_0ufn0mk" name="No&#10;" sourceRef="ExclusiveGateway_1i8dq6z" targetRef="Task_0ja2hei">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${managersApprove == 'false'}]]></bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="SequenceFlow_1f7nqi6" name="No" sourceRef="ExclusiveGateway_1jus1w0" targetRef="Task_0ja2hei">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${managersApprove == 'false'}]]></bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1u01lwb" sourceRef="StartEvent_1" targetRef="Task_0kj1gvm" />
     <bpmn:userTask id="Task_0ja2hei" name="edit application" camunda:formKey="embedded:/forms/hiring/hr-request.html">
       <bpmn:incoming>SequenceFlow_0ufn0mk</bpmn:incoming>

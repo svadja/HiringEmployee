@@ -3,6 +3,11 @@
     camForm.on('form-loaded', function() {
       camForm.variableManager.fetchVariable('application');
     });
+	
+	camForm.on('variables-fetched', function() {
+    $scope.application = camForm.variableManager.variableValue('application');
+  	});
+	
   </script>
 	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
 </form>

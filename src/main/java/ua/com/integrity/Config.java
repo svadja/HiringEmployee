@@ -44,6 +44,7 @@ public class Config {
         config.setJobExecutorActivate(true);
         config.setAuthorizationEnabled(true);
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        //config.setDeploymentResources(resolver.getResources("classpath:/bpmn/processLight.bpmn"));
         config.setDeploymentResources(resolver.getResources("classpath:/bpmn/*.bpmn"));
         List<ProcessEnginePlugin> processEnginePlugins = new ArrayList<>();
         SpinProcessEnginePlugin spinProcessEnginePlugin = new SpinProcessEnginePlugin();
