@@ -1,0 +1,8 @@
+<form role="form">
+	<script cam-script type="text/form-script">
+    camForm.on('form-loaded', function() {
+      camForm.variableManager.fetchVariable('application');
+    });
+  </script>
+	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
+</form>

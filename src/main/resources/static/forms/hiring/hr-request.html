@@ -1,6 +1,25 @@
-<form>
+<form role="form">
+	<script cam-script type="text/form-script">
+	var application = $scope.application = {
+		person: {}	
+	};
 
-  <label >AAAAAAAAAAAAA</label>
 
-  
+   inject(['$http', 'Uri', function($http, Uri) {
+        camForm.on('form-loaded', function() {
+            camForm.variableManager.createVariable({
+                name: 'application',
+                type: 'Object',
+                value: application,
+                valueInfo: {
+                    serializationDataFormat: 'application/json',
+                    objectTypeName: 'ua.com.integrity.model.Application'
+                }
+            });
+        });
+    }]);
+
+  </script>
+	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
+
 </form>
