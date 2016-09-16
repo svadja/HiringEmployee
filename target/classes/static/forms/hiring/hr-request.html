@@ -1,11 +1,20 @@
 <form role="form">
 	<script cam-script type="text/form-script">
+
+	$scope.positions = [];
+	$scope.datePicker = {birthDateOpened:false};
+
+	$scope.openBirthDate = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.datePicker.birthDateOpened = true;
+    };	
+
 	var application = $scope.application = {
 		person: {}	
 	};
 
-
-   inject(['$http', 'Uri', function($http, Uri) {
+	inject(['$http', 'Uri', function($http, Uri) {
         camForm.on('form-loaded', function() {
             camForm.variableManager.createVariable({
                 name: 'application',
@@ -17,6 +26,17 @@
                 }
             });
         });
+		
+		$http({
+                method: 'GET',
+                url: '/api/positions',
+                data: {}
+            }).success(function(result) {
+                for (var el in result) {
+                    $scope.positions.push(result[el]);
+               }
+        });
+		
     }]);
 
   </script>

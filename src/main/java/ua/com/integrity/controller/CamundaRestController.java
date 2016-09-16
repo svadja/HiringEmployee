@@ -16,6 +16,8 @@ public class CamundaRestController {
     @RequestMapping(value = "/positions", method = RequestMethod.GET,  produces = "application/json")
     public List<String>  getPosition() {
         List<String> positions = new ArrayList<String>() ;
+        positions.add("QA");
+        positions.add("Developer");
         return positions;
     }	
 }
