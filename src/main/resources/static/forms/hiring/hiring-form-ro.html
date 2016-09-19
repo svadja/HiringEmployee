@@ -1,8 +1,6 @@
 <form role="form">
 	<div class="row">
-		<div class="group-header col-xs-12">
-			<label>Дані співробітника</label>
-		</div>
+		<label>Дані співробітника</label>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
@@ -54,9 +52,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="group-header col-xs-12">
-			<label>Посада</label>
-		</div>
+		<label>Посада</label>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
@@ -76,19 +72,8 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
-			<label for="workDate">Дата виходу: </label>
-			<p class="input-group">
-				<input id="workDate" class="form-control" type="Date"
-					required ng-model="application.job.workDate"
-					datepicker-popup="yyyy-MM-dd"
-					is-open="datePicker.workDateOpened">
-				<span class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="openWorkDate($event)">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</button>
-				</span>
-			</p>	
+			<label for="workDate">Дата виходу: </label> <input id="workDate"
+				class="form-control" required ng-model="application.job.workDate">
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="salary">З.П. на випробувальний період: </label> <input

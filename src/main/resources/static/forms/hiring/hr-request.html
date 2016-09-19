@@ -2,12 +2,21 @@
 	<script cam-script type="text/form-script">
 
 	$scope.positions = [];
-	$scope.datePicker = {birthDateOpened:false};
+	$scope.datePicker = {
+			birthDateOpened:false,
+			workDateOpened:false
+			};
 
 	$scope.openBirthDate = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
         $scope.datePicker.birthDateOpened = true;
+    };
+    
+	$scope.openWorkDate = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.datePicker.workDateOpened = true;
     };	
 
 	var application = $scope.application = {
