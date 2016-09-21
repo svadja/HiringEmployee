@@ -5,50 +5,36 @@
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="lastName">Прізвище:</label> <input id="lastName"
-				class="form-control" required ng-model="application.person.lastName">
+				class="form-control" ng-model="application.person.lastName" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="firstName">Ім'я: </label> <input id="firstName"
-				class="form-control" required
-				ng-model="application.person.firstName">
+				class="form-control" ng-model="application.person.firstName" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="middName">По батькові: </label> <input id="middName"
-				class="form-control" required ng-model="application.person.middName">
+				class="form-control" ng-model="application.person.middName" type="text" readonly>
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
-			<label for="sex">Стать: </label> <select id="sex"
-				class="form-control" required ng-model="application.person.sex">
-				<option value="MALE" selected="selected">Чоловіча</option>
-				<option value="FEMALE">Жіноча</option>
-			</select>
+			<label for="sex">Стать: </label> <input id="sex"
+				class="form-control" ng-model="application.person.sex" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="birthDate">День народження: </label> 
-			<p class="input-group">
-				<input id="birthDate" class="form-control" type="Date"
-					required ng-model="application.person.birthDate"
-					datepicker-popup="yyyy-MM-dd"
-					is-open="datePicker.birthDateOpened">
-				<span class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="openBirthDate($event)">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</button>
-				</span>
-			</p>
+			<input id="birthDate"
+				class="form-control" ng-model="application.person.birthDate" type="text" readonly>
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="phone">Телефон: </label> <input id="phone"
-				class="form-control" ng-model="application.person.phone"  mask="(999) 999-9999" required>
+				class="form-control" ng-model="application.person.phone"  type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="skype">Skype: </label> <input id="skype"
-				class="form-control" ng-model="application.person.skype" required>
+				class="form-control" ng-model="application.person.skype" type="text" readonly>
 		</div>
 	</div>
 	<div class="row">
@@ -56,29 +42,26 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
-			<label for="position">Посада: </label> <select id="position"
-				class="form-control" ng-model="application.job.position"
-				ng-options="item for item in positions" required>
-			</select>
+			<label for="position">Посада: </label>
+			<input id="position" class="form-control" ng-model="application.job.position" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="unit">Відділ: </label> <input id="unit"
-				class="form-control" required ng-model="application.job.unit">
+				class="form-control" ng-model="application.job.unit" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="department">Департамент: </label> <input id="department"
-				class="form-control" required ng-model="application.job.department">
+				class="form-control" ng-model="application.job.department" type="text" readonly>
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="workDate">Дата виходу: </label> <input id="workDate"
-				class="form-control" required ng-model="application.job.workDate">
+				class="form-control" ng-model="application.job.workDate" type="text" readonly>
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="salary">З.П. на випробувальний період: </label> <input
-				id="salary" class="form-control" required
-				ng-model="application.job.salary">
+				id="salary" class="form-control" ng-model="application.job.salary" type="text" readonly>
 		</div>
 	</div>
 

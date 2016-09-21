@@ -9,5 +9,25 @@
   	});
 	
   </script>
-	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
+	<div ng-include="'/forms/hiring/hiring-form-ro.html'"></div>
+
+	<div class="row">
+		<div class="form-group col-xs-12">
+			<label for="declineReason" class="app-required-with-star">Коментар:</label>
+			<textarea id="declineReason" class="form-control" required
+				ng-model="vacation.declineReason" cam-variable-type="String"></textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-xs-12">
+			<label for="managerApprove">Підтвердити?</label> <select
+				id="managerApprove" class="form-control" required
+				cam-variable-name="managersApprove" cam-variable-type="Boolean">
+				<option value="true">Так</option>
+				<option value="false">Ні</option>
+			</select>
+		</div>
+	</div>
+
 </form>

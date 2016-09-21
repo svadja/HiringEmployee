@@ -1,5 +1,7 @@
 package ua.com.integrity.model;
 
+import java.util.List;
+
 public class Application {
 
 	private int id;
@@ -9,6 +11,7 @@ public class Application {
 	private ManagerData managerData;
 	private ItData itData;
 	private boolean isCardRequested;
+	private List<HistoryRecord> history;
 
 	public int getId() {
 		return id;
@@ -64,6 +67,14 @@ public class Application {
 
 	public void setCardRequested(boolean isCardRequested) {
 		this.isCardRequested = isCardRequested;
+	}
+
+	public List<HistoryRecord> getHistory() {
+		return history;
+	}
+
+	public void setHistory(List<HistoryRecord> history) {
+		this.history = history;
 	}
 
 }
