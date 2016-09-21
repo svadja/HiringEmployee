@@ -1,21 +1,21 @@
 package ua.com.integrity.model;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 public class JobDescription {
 	private int id;
 	private String position;
 	private String unit;
 	private String department;
-	private String workDate;
-	private BigDecimal salary;
+	private Date workDate;
+	private int salary;
 
 	public JobDescription() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobDescription(int id, String position, String unit, String department, String workDate, BigDecimal salary) {
+	public JobDescription(int id, String position, String unit, String department, Date workDate, int salary) {
 		super();
 		this.id = id;
 		this.position = position;
@@ -57,19 +57,19 @@ public class JobDescription {
 		this.department = department;
 	}
 
-	public String getWorkDate() {
+	public Date getWorkDate() {
 		return workDate;
 	}
 
-	public void setWorkDate(String workDate) {
+	public void setWorkDate(Date workDate) {
 		this.workDate = workDate;
 	}
 
-	public BigDecimal getSalary() {
+	public int getSalary() {
 		return salary;
 	}
 
-	public void setSalary(BigDecimal salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 

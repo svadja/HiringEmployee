@@ -2,9 +2,17 @@
 	<script cam-script type="text/form-script">
 
 	$scope.positions = [];
+	$scope.units = [];
+	$scope.departments = [];
+	
+	
+	
+	
 	$scope.datePicker = {
 			birthDateOpened:false,
-			workDateOpened:false
+			workDateOpened:false,
+			birthDate:new Date(),
+			workDate:new Date()
 			};
 
 	$scope.openBirthDate = function($event) {
@@ -20,7 +28,8 @@
     };	
 
 	var application = $scope.application = {
-		person: {}	
+		person: {},
+		job:{}
 	};
 
 	inject(['$http', 'Uri', function($http, Uri) {
@@ -46,9 +55,35 @@
                }
         });
 		
+		$http({
+            method: 'GET',
+            url: '/api/units',
+            data: {}
+        }).success(function(result) {
+            for (var el in result) {
+                $scope.units.push(result[el]);
+           }
+        });
+		
+		$http({
+            method: 'GET',
+            url: '/api/departments',
+            data: {}
+        }).success(function(result) {
+            for (var el in result) {
+                $scope.departments.push(result[el]);
+           }
+        });
+		
     }]);
 
-  </script>
+	
+    camForm.on('submit', function(e) {
+        $scope.application.person.birthDate = new Date($scope.datePicker.birthDate);
+        $scope.application.job.workDate = new Date($scope.datePicker.workDate);
+    });
+    
+    </script>
 	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
 
 </form>

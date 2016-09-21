@@ -52,7 +52,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_0ntb6qo" sourceRef="ExclusiveGateway_00ihmi4" targetRef="Task_1f87fx0" />
     <bpmn:sequenceFlow id="SequenceFlow_1dkvt7f" sourceRef="Task_1f87fx0" targetRef="Task_096mgzv" />
     <bpmn:sequenceFlow id="SequenceFlow_19iqqyl" sourceRef="Task_096mgzv" targetRef="EndEvent_0zuc3x4" />
-    <bpmn:userTask id="Task_0kj1gvm" name="request manager ">
+    <bpmn:userTask id="Task_0kj1gvm" name="request manager " camunda:formKey="embedded:/forms/hiring/manager-approve.html">
       <bpmn:incoming>SequenceFlow_0uithym</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1u01lwb</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0vsrn6y</bpmn:outgoing>
@@ -92,6 +92,9 @@
       <bpmn:incoming>SequenceFlow_0005jmd</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:startEvent id="StartEvent_1" name="open application&#10;" camunda:formKey="embedded:/forms/hiring/hr-request.html">
+      <bpmn:extensionElements>
+        <camunda:executionListener delegateExpression="${hiringStartEvent}" event="end" />
+      </bpmn:extensionElements>
       <bpmn:outgoing>SequenceFlow_1u01lwb</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0005jmd" sourceRef="Task_0ja2hei" targetRef="EndEvent_0zuc3x4" />

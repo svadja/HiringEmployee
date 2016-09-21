@@ -13,8 +13,6 @@ public class HiringStartEvent implements ExecutionListener {
 		String userId = delegateExecution.getProcessEngineServices().getIdentityService().getCurrentAuthentication().getUserId();
 		String processInstanceId = delegateExecution.getProcessInstanceId();
 		Application application = (Application) delegateExecution.getVariable("application");
-		application.setProcessInstanceId(processInstanceId);
-		
 	}
 
 }
