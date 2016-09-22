@@ -57,52 +57,28 @@
 			<label>Посада</label>
 		</div>
 	</div>
-
 	<div class="row">
-
-
-
-		<div class="form-group col-xs-4">
-			<label class="control-label" for="department">Департамент: </label>
-			<div class="controls">
-				<select id="department" ng-model="application.job.department"
-					ng-options="department as department for department in departments">
-				</select>
-			</div>
-		</div>
-		<div class="form-group col-xs-4">
-			<label class="control-label" for="position">Посада: </label>
-			<div class="controls">
-				<select id="position" ng-model="application.job.position"
-					ng-options="position as position for position in positions">
-				</select>
-			</div>
-		</div>
-
-		<!-- 
 		<div class="form-group col-xs-4">
 			<label for="department">Департамент: </label> <select id="department"
-				class="form-control" ng-model="jdepartment">
+				class="form-control" ng-model="job.department">
 				<option ng-repeat="ditem in departments">{{ditem}}</option>
 			</select>
 		</div>
-	
+
 		<div class="form-group col-xs-4">
 			<label for="unit">Відділ: </label> <select id="unit"
-				class="form-control" ng-model="jobunit">
+				class="form-control" ng-model="job.unit">
 				<option ng-repeat="uitem in units">{{uitem}}</option>
 			</select>
 		</div>
-		
+
 		<div class="form-group col-xs-4">
 			<label for="position">Посада: </label> <select id="position"
-				class="form-control" ng-model="jposition">
+				class="form-control" ng-model="job.position">
 				<option ng-repeat="pitem in positions">{{pitem}}</option>
 			</select>
 		</div>
-		 -->
 	</div>
-
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="workDate">Дата виходу: </label>

@@ -10,9 +10,7 @@ import ua.com.integrity.model.Application;
 public class HiringStartEvent implements ExecutionListener {
 	@Override
 	public void notify(DelegateExecution delegateExecution) throws Exception {
-		String userId = delegateExecution.getProcessEngineServices().getIdentityService().getCurrentAuthentication().getUserId();
-		String processInstanceId = delegateExecution.getProcessInstanceId();
-		Application application = (Application) delegateExecution.getVariable("application");
+
 	}
 
 }
