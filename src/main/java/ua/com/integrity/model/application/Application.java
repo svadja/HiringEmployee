@@ -1,6 +1,9 @@
-package ua.com.integrity.model;
+package ua.com.integrity.model.application;
 
 import java.util.List;
+
+import ua.com.integrity.model.company.JobDescription;
+import ua.com.integrity.model.person.PersonalInformation;
 
 public class Application {
 

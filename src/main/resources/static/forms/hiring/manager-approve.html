@@ -1,5 +1,11 @@
 <form role="form">
 	<script cam-script type="text/form-script">
+
+	$scope.formatDate = function(date){
+      var dateOut = new Date(date);
+      return dateOut;
+    };
+
     camForm.on('form-loaded', function() {
       camForm.variableManager.fetchVariable('application');
     });

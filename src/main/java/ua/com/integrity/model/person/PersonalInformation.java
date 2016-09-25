@@ -1,4 +1,4 @@
-package ua.com.integrity.model;
+package ua.com.integrity.model.person;
 
 import java.util.Date;
 

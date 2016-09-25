@@ -1,24 +1,33 @@
-package ua.com.integrity.model;
+package ua.com.integrity.model.company;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 public class JobDescription {
+
 	private int id;
 	private String position;
+	private int positionId;
 	private String unit;
 	private String department;
 	private Date workDate;
-	private int salary;
+	private BigDecimal salary;
 
 	public JobDescription() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobDescription(int id, String position, String unit, String department, Date workDate, int salary) {
+	public JobDescription(int id, String position, int positionId, String unit, String department, Date workDate,
+			BigDecimal salary) {
 		super();
 		this.id = id;
 		this.position = position;
+		this.positionId = positionId;
 		this.unit = unit;
 		this.department = department;
 		this.workDate = workDate;
@@ -39,6 +48,14 @@ public class JobDescription {
 
 	public void setPosition(String position) {
 		this.position = position;
+	}
+
+	public int getPositionId() {
+		return positionId;
+	}
+
+	public void setPositionId(int positionId) {
+		this.positionId = positionId;
 	}
 
 	public String getUnit() {
@@ -65,11 +82,11 @@ public class JobDescription {
 		this.workDate = workDate;
 	}
 
-	public int getSalary() {
+	public BigDecimal getSalary() {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
 

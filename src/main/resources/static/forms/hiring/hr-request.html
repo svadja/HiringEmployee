@@ -5,19 +5,12 @@
 	$scope.units = [];
 	$scope.departments = [];
 	
-	$scope.job = {
-		department:'',
-		unit:'',
-		position:''
-	};
-	
-	
 	$scope.datePicker = {
-			birthDateOpened:false,
-			workDateOpened:false,
-			birthDate:new Date(),
-			workDate:new Date()
-			};
+        birthDateOpened:false,
+        workDateOpened:false,
+        birthDate:new Date(),
+        workDate:new Date()
+	};
 
 	$scope.openBirthDate = function($event) {
         $event.preventDefault();
@@ -31,12 +24,15 @@
         $scope.datePicker.workDateOpened = true;
     };	
 
+	$scope.setPositions = function(positionIndex) {
+ 		$scope.application.job.position = $scope.positions[positionIndex].name;
+		$scope.application.job.positionId = $scope.positions[positionIndex].value;
+    };	
+
+	
 	var application = $scope.application = {
 		person: {},
 		job:{
-			department:'',
-			unit:'',
-			position:''		
 		}
 	};
 
@@ -48,29 +44,9 @@
                 value: application,
                 valueInfo: {
                     serializationDataFormat: 'application/json',
-                    objectTypeName: 'ua.com.integrity.model.Application'
+                    objectTypeName: 'ua.com.integrity.model.application.Application'
                 }
             });
-        });
-		
-		$http({
-                method: 'GET',
-                url: '/api/positions',
-                data: {}
-            }).success(function(result) {
-                for (var el in result) {
-                    $scope.positions.push(result[el]);
-               }
-        });
-		
-		$http({
-            method: 'GET',
-            url: '/api/units',
-            data: {}
-        }).success(function(result) {
-            for (var el in result) {
-                $scope.units.push(result[el]);
-           }
         });
 		
 		$http({
@@ -82,17 +58,54 @@
                 $scope.departments.push(result[el]);
            }
         });
-		
+
+        $scope.getUnitsAndPositions = function(){
+			$scope.units = [];
+			$scope.positions = [];
+        	$http({
+                method: 'GET',
+                url: '/api/units',
+                data: {}
+            }).success(function(result) {
+                for (var el in result) {
+                    $scope.units.push(result[el]);
+               }
+            });
+
+			$http({
+                method: 'GET',
+                url: '/api/positions',
+                data: {}
+            }).success(function(result) {
+                for (var el in result) {
+                    $scope.positions.push(result[el]);
+               }
+            });
+        }
+        
+        $scope.getPositions = function(){
+			$scope.positions = [];
+        	$http({
+                    method: 'GET',
+                    url: '/api/positions',
+                    data: {}
+                }).success(function(result) {
+                    for (var el in result) {
+                        $scope.positions.push(result[el]);
+                   }
+            });
+        }
     }]);
 
 	
     camForm.on('submit', function(e) {
+				console.log($scope.position);
         $scope.application.person.birthDate = new Date($scope.datePicker.birthDate);
         $scope.application.job.workDate = new Date($scope.datePicker.workDate);
 		console.log($scope.application);
     });
     
     </script>
-	<div ng-include="'/forms/hiring/hiring-form.html'"></div>
+	<div ng-include="'/forms/hiring/hiring-form-e.html'"></div>
 
 </form>

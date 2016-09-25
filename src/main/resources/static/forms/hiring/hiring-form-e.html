@@ -60,22 +60,22 @@
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="department">Департамент: </label> <select id="department"
-				class="form-control" ng-model="job.department">
-				<option ng-repeat="ditem in departments">{{ditem}}</option>
+				class="form-control" ng-model="application.job.department" ng-change="getUnitsAndPositions()">
+				<option ng-repeat="ditem in departments" value="{{ditem.name}}">{{ditem.name}}</option>
 			</select>
 		</div>
 
 		<div class="form-group col-xs-4">
 			<label for="unit">Відділ: </label> <select id="unit"
-				class="form-control" ng-model="job.unit">
-				<option ng-repeat="uitem in units">{{uitem}}</option>
+				class="form-control" ng-model="application.job.unit"  ng-change="getPositions()">
+				<option ng-repeat="uitem in units" value="{{uitem.name}}">{{uitem.name}}</option>
 			</select>
 		</div>
 
 		<div class="form-group col-xs-4">
 			<label for="position">Посада: </label> <select id="position"
-				class="form-control" ng-model="job.position">
-				<option ng-repeat="pitem in positions">{{pitem}}</option>
+				class="form-control" ng-model="positionIndex" ng-change="setPositions(positionIndex)">
+				<option ng-repeat="pitem in positions" ng-value="$index">{{pitem.name}}</option>
 			</select>
 		</div>
 	</div>
@@ -96,7 +96,7 @@
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="salary">З.П. на випробувальний період: </label> <input
-				id="salary" class="form-control" ng-model="application.job.salary">
+				id="salary" class="form-control" ng-model="application.job.salary"  mask="9?9?9?9?9?9?">
 		</div>
 	</div>
 </form>

@@ -4,7 +4,7 @@ import org.camunda.bpm.engine.delegate.DelegateTask;
 import org.camunda.bpm.engine.delegate.TaskListener;
 import org.springframework.stereotype.Component;
 
-import ua.com.integrity.model.Application;
+import ua.com.integrity.model.application.Application;
 
 @Component
 public class TestHiring implements TaskListener  {
