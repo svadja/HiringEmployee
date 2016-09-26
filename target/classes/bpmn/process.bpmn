@@ -6,7 +6,7 @@
   <bpmn:process id="HiringEmployee" name="Hirring new employee" isExecutable="true">
     <bpmn:laneSet>
       <bpmn:lane id="Lane_1niocqh" name="Head of Dep">
-        <bpmn:flowNodeRef>Task_115sugs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_dep_head</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_1i8dq6z</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_16fk8yg</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -24,7 +24,7 @@
         <bpmn:flowNodeRef>Task_1yyo3w9</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0y3king" name="Head of Unit">
-        <bpmn:flowNodeRef>Task_0kj1gvm</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_unit_head</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_1jus1w0</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0gx2u0h" name="System">
@@ -36,7 +36,7 @@
       <bpmn:outgoing>SequenceFlow_17mckii</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_1f7nqi6</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_17mckii" sourceRef="ExclusiveGateway_1jus1w0" targetRef="Task_115sugs">
+    <bpmn:sequenceFlow id="SequenceFlow_17mckii" sourceRef="ExclusiveGateway_1jus1w0" targetRef="Task_dep_head">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${managersApprove}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_1i8dq6z" name="Approved?">
@@ -44,7 +44,7 @@
       <bpmn:outgoing>SequenceFlow_15n0scw</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0ufn0mk</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="SequenceFlow_0p2fubj" sourceRef="Task_115sugs" targetRef="ExclusiveGateway_1i8dq6z" />
+    <bpmn:sequenceFlow id="SequenceFlow_0p2fubj" sourceRef="Task_dep_head" targetRef="ExclusiveGateway_1i8dq6z" />
     <bpmn:sequenceFlow id="SequenceFlow_15n0scw" sourceRef="ExclusiveGateway_1i8dq6z" targetRef="ExclusiveGateway_16fk8yg" />
     <bpmn:sequenceFlow id="SequenceFlow_0wy5b5u" sourceRef="ExclusiveGateway_16fk8yg" targetRef="Task_0oq0y4e" />
     <bpmn:sequenceFlow id="SequenceFlow_0lqvptb" sourceRef="ExclusiveGateway_16fk8yg" targetRef="Task_1yyo3w9" />
@@ -53,12 +53,18 @@
     <bpmn:sequenceFlow id="SequenceFlow_0ntb6qo" sourceRef="ExclusiveGateway_00ihmi4" targetRef="Task_1f87fx0" />
     <bpmn:sequenceFlow id="SequenceFlow_1dkvt7f" sourceRef="Task_1f87fx0" targetRef="Task_096mgzv" />
     <bpmn:sequenceFlow id="SequenceFlow_19iqqyl" sourceRef="Task_096mgzv" targetRef="EndEvent_0zuc3x4" />
-    <bpmn:userTask id="Task_0kj1gvm" name="request manager " camunda:formKey="embedded:/forms/hiring/manager-approve.html">
+    <bpmn:userTask id="Task_unit_head" name="approve head of unit " camunda:formKey="embedded:/forms/hiring/manager-approve.html">
+      <bpmn:extensionElements>
+        <camunda:taskListener delegateExpression="${managerAssignment}" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_0uithym</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1u01lwb</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0f5xvrt</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_115sugs" name="approve head of dep" camunda:formKey="embedded:/forms/hiring/manager-approve.html">
+    <bpmn:userTask id="Task_dep_head" name="approve head of dep" camunda:formKey="embedded:/forms/hiring/manager-approve.html">
+      <bpmn:extensionElements>
+        <camunda:taskListener delegateExpression="${managerAssignment}" event="create" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_17mckii</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0p2fubj</bpmn:outgoing>
     </bpmn:userTask>
@@ -99,21 +105,21 @@
       <bpmn:outgoing>SequenceFlow_1u01lwb</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0005jmd" sourceRef="Task_0ja2hei" targetRef="EndEvent_0zuc3x4" />
-    <bpmn:sequenceFlow id="SequenceFlow_0uithym" sourceRef="Task_0ja2hei" targetRef="Task_0kj1gvm" />
+    <bpmn:sequenceFlow id="SequenceFlow_0uithym" sourceRef="Task_0ja2hei" targetRef="Task_unit_head" />
     <bpmn:sequenceFlow id="SequenceFlow_0ufn0mk" name="No&#10;" sourceRef="ExclusiveGateway_1i8dq6z" targetRef="Task_0ja2hei">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${managersApprove == 'false'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1f7nqi6" name="No" sourceRef="ExclusiveGateway_1jus1w0" targetRef="Task_0ja2hei">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!managersApprove}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="SequenceFlow_1u01lwb" sourceRef="StartEvent_1" targetRef="Task_0kj1gvm" />
+    <bpmn:sequenceFlow id="SequenceFlow_1u01lwb" sourceRef="StartEvent_1" targetRef="Task_unit_head" />
     <bpmn:userTask id="Task_0ja2hei" name="edit application" camunda:formKey="embedded:/forms/hiring/hr-request.html">
       <bpmn:incoming>SequenceFlow_0ufn0mk</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1f7nqi6</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0005jmd</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0uithym</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="SequenceFlow_0f5xvrt" sourceRef="Task_0kj1gvm" targetRef="ExclusiveGateway_1jus1w0" />
+    <bpmn:sequenceFlow id="SequenceFlow_0f5xvrt" sourceRef="Task_unit_head" targetRef="ExclusiveGateway_1jus1w0" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1p3y7xj">
@@ -240,10 +246,10 @@
           <dc:Bounds x="879" y="267.5" width="90" height="20" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="UserTask_0u2yoff_di" bpmnElement="Task_0kj1gvm">
+      <bpmndi:BPMNShape id="UserTask_0u2yoff_di" bpmnElement="Task_unit_head">
         <dc:Bounds x="437" y="463" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1dhptok_di" bpmnElement="Task_115sugs">
+      <bpmndi:BPMNShape id="UserTask_1dhptok_di" bpmnElement="Task_dep_head">
         <dc:Bounds x="548" y="580" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_0cre28a_di" bpmnElement="Task_0oq0y4e">

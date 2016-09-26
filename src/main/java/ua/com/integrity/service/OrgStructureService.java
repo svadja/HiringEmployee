@@ -1,5 +1,6 @@
 package ua.com.integrity.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,22 @@ public class OrgStructureService {
 	
 	public List<Position> getAllPositionsInUnit(int unitId) {
 		return (List<Position>) orgStructureDao.getAllPositionInUnit(unitId);
+	}
+	
+	public Department getDepartmentById(Integer id){
+		return (Department) commonDao.getById(Department.class.getName(), id);
+	}
+	
+	public Unit getUnitById(Integer id){
+		return (Unit) commonDao.getById(Unit.class.getName(),id);
+	}
+	
+	public Position getPositionById(Integer id){
+		return (Position) commonDao.getById(Position.class.getName(),id);
+	}
+	
+	public Position getFullPositionById(Integer id){
+		return orgStructureDao.getFullPositionById(id);
 	}
 	
 	public void addOrgItem(Object item) {

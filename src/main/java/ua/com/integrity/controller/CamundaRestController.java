@@ -61,6 +61,13 @@ public class CamundaRestController {
       	orgStructureService.addOrgItems(positions);
     }
 
+    
+    @RequestMapping(value = "/test", method = RequestMethod.GET,  produces = "application/json")
+    public String getTest() {
+    	Position position = orgStructureService.getFullPositionById(6);
+        return null;
+    }
+    
 }
 
 
