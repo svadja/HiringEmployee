@@ -1,39 +1,32 @@
 <form role="form">
 	<script cam-script type="text/form-script">
 
-	$scope.formatDate = function(date){
-      var dateOut = new Date(date);
-      return dateOut;
-    };
-
     camForm.on('form-loaded', function() {
-      camForm.variableManager.fetchVariable('application');
+    	camForm.variableManager.fetchVariable('application');
     });
 	
 	camForm.on('variables-fetched', function() {
-    $scope.application = camForm.variableManager.variableValue('application');
+    	$scope.application = camForm.variableManager.variableValue('application');
   	});
 	
   </script>
 	<div ng-include="'/forms/hiring/hiring-form-ro.html'"></div>
-
 	<div class="row">
 		<div class="form-group col-xs-12">
 			<label for="comment">Коментар:</label>
-			<textarea id="comment" class="form-control" required
-				ng-model="comment" cam-variable-type="String"></textarea>
+			<textarea id="comment" class="form-control" ng-model="comment"
+				cam-variable-type="String"></textarea>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-12">
 			<label for="managerApprove">Підтвердити?</label> <select
-				id="managerApprove" class="form-control" required
+				id="managerApprove" class="form-control"
 				cam-variable-name="managersApprove" cam-variable-type="Boolean">
 				<option value="true">Так</option>
 				<option value="false">Ні</option>
 			</select>
 		</div>
 	</div>
-
 </form>

@@ -19,39 +19,45 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="sex">Стать: </label> <select id="sex"
-				class="form-control" ng-model="application.person.sex">
-				<option value="MALE" selected="selected">Чоловіча</option>
-				<option value="FEMALE">Жіноча</option>
-			</select>
+		<div class="form-group col-xs-8">
+			<div class="row">
+				<div class="form-group col-xs-6">
+					<label for="sex">Стать: </label> <select id="sex"
+						class="form-control" ng-model="application.person.sex">
+						<option value="MALE" selected="selected">Чоловіча</option>
+						<option value="FEMALE">Жіноча</option>
+					</select>
+				</div>
+				<div class="form-group col-xs-6">
+					<label for="birthDate">День народження: </label>
+					<p class="input-group">
+						<input id="birthDate" class="form-control" type="Date"
+							ng-model="datePicker.birthDate" datepicker-popup="yyyy-MM-dd"
+							is-open="datePicker.birthDateOpened"> <span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="openBirthDate($event)">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-6">
+					<label for="phone">Телефон: </label> <input id="phone"
+						class="form-control" ng-model="application.person.phone"
+						mask="(999) 999-9999">
+				</div>
+				<div class="form-group col-xs-6">
+					<label for="skype">Skype: </label> <input id="skype"
+						class="form-control" ng-model="application.person.skype">
+				</div>
+			</div>
 		</div>
-		<div class="form-group col-xs-4">
-			<label for="birthDate">День народження: </label>
-			<p class="input-group">
-				<input id="birthDate" class="form-control" type="Date"
-					ng-model="datePicker.birthDate" datepicker-popup="yyyy-MM-dd"
-					is-open="datePicker.birthDateOpened"> <span
-					class="input-group-btn">
-					<button type="button" class="btn btn-default"
-						ng-click="openBirthDate($event)">
-						<i class="glyphicon glyphicon-calendar"></i>
-					</button>
-				</span>
-			</p>
-		</div>
+		<div class="form-group col-xs-4"></div>
 	</div>
-	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="phone">Телефон: </label> <input id="phone"
-				class="form-control" ng-model="application.person.phone"
-				mask="(999) 999-9999">
-		</div>
-		<div class="form-group col-xs-4">
-			<label for="skype">Skype: </label> <input id="skype"
-				class="form-control" ng-model="application.person.skype">
-		</div>
-	</div>
+
 	<div class="row">
 		<div class="group-header col-xs-12">
 			<label>Посада</label>
@@ -60,21 +66,24 @@
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="department">Департамент: </label> <select id="department"
-				class="form-control" ng-model="application.job.department" ng-change="getUnitsAndPositions()">
+				class="form-control" ng-model="application.job.department"
+				ng-change="getUnitsAndPositions()">
 				<option ng-repeat="ditem in departments" value="{{ditem.name}}">{{ditem.name}}</option>
 			</select>
 		</div>
 
 		<div class="form-group col-xs-4">
 			<label for="unit">Відділ: </label> <select id="unit"
-				class="form-control" ng-model="application.job.unit"  ng-change="getPositions()">
+				class="form-control" ng-model="application.job.unit"
+				ng-change="getPositions()">
 				<option ng-repeat="uitem in units" value="{{uitem.name}}">{{uitem.name}}</option>
 			</select>
 		</div>
 
 		<div class="form-group col-xs-4">
 			<label for="position">Посада: </label> <select id="position"
-				class="form-control" ng-model="positionIndex" ng-change="setPositions(positionIndex)">
+				class="form-control" ng-model="positionIndex"
+				ng-change="setPositions(positionIndex)">
 				<option ng-repeat="pitem in positions" ng-value="$index">{{pitem.name}}</option>
 			</select>
 		</div>
@@ -96,7 +105,8 @@
 		</div>
 		<div class="form-group col-xs-4">
 			<label for="salary">З.П. на випробувальний період: </label> <input
-				id="salary" class="form-control" ng-model="application.job.salary"  mask="9?9?9?9?9?9?">
+				id="salary" class="form-control" ng-model="application.job.salary"
+				mask="9?9?9?9?9?9?">
 		</div>
 	</div>
 </form>

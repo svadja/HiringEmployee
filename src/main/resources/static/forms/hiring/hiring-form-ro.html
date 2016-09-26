@@ -1,78 +1,74 @@
 <form role="form">
 	<div class="row">
-		<label>Дані співробітника</label>
-	</div>
-	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="lastName">Прізвище:</label> <input id="lastName"
-				class="form-control" ng-model="application.person.lastName"
-				type="text" readonly>
-		</div>
-		<div class="form-group col-xs-4">
-			<label for="firstName">Ім'я: </label> <input id="firstName"
-				class="form-control" ng-model="application.person.firstName"
-				type="text" readonly>
-		</div>
-		<div class="form-group col-xs-4">
-			<label for="middName">По батькові: </label> <input id="middName"
-				class="form-control" ng-model="application.person.middName"
-				type="text" readonly>
+		<div class="group-header col-xs-12">
+			<label>Дані співробітника</label>
 		</div>
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
-			<label for="sex">Стать: </label> <input id="sex" class="form-control"
-				ng-model="application.person.sex" type="text" readonly>
+			<label for="lastName">Прізвище:</label> <span id="lastName"
+				class="form-control">{{application.person.lastName}}</span>
 		</div>
 		<div class="form-group col-xs-4">
-			<label for="birthDate">День народження: </label> <input
-				id="birthDate" class="form-control"
-				ng-model="application.person.birthDate" type="Date" datepicker-popup="yyyy-MM-dd" readonly>
+			<label for="firstName">Ім'я: </label> <span id="firstName"
+				class="form-control">{{application.person.firstName}}</span>
+		</div>
+		<div class="form-group col-xs-4">
+			<label for="middName">По батькові: </label> <span id="middName"
+				class="form-control">{{application.person.middName}}</span>
 		</div>
 	</div>
 	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="phone">Телефон: </label> <input id="phone"
-				class="form-control" ng-model="application.person.phone" type="text"
-				readonly>
+		<div class="form-group col-xs-8">
+			<div class="row">
+				<div class="form-group col-xs-6">
+					<label for="sex">Стать: </label> <span id="sex"
+						class="form-control">{{application.person.sex}}</span>
+				</div>
+				<div class="form-group col-xs-6">
+					<label for="birthDate">День народження: </label> <span
+						id="birthDate" class="form-control">{{application.person.birthDate|date:'yyyy-MM-dd'}}</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-6">
+					<label for="phone">Телефон: </label> <span id="phone"
+						class="form-control" mask="(999) 999-9999">{{application.person.phone}}</span>
+				</div>
+				<div class="form-group col-xs-6">
+					<label for="skype">Skype: </label> <span id="skype"
+						class="form-control">{{application.person.skype}}</span>
+				</div>
+			</div>
+			<div class="form-group col-xs-4"></div>
 		</div>
-		<div class="form-group col-xs-4">
-			<label for="skype">Skype: </label> <input id="skype"
-				class="form-control" ng-model="application.person.skype" type="text"
-				readonly>
+		<div class="row">
+			<div class="group-header col-xs-12">
+				<label>Посада</label>
+			</div>
 		</div>
-	</div>
-	<div class="row">
-		<label>Посада</label>
-	</div>
-	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="department">Департамент: </label> <input id="department"
-				class="form-control" ng-model="application.job.department"
-				type="text" readonly>
+		<div class="row">
+			<div class="form-group col-xs-4">
+				<label for="department">Департамент: </label> <span id="department"
+					class="form-control">{{application.job.department}}</span>
+			</div>
+			<div class="form-group col-xs-4">
+				<label for="unit">Відділ: </label> <span id="unit"
+					class="form-control">{{application.job.unit}}</span>
+			</div>
+			<div class="form-group col-xs-4">
+				<label for="position">Посада: </label> <span id="position"
+					class="form-control">{{application.job.position}} </span>
+			</div>
 		</div>
-		<div class="form-group col-xs-4">
-			<label for="unit">Відділ: </label> <input id="unit"
-				class="form-control" ng-model="application.job.unit" type="text"
-				readonly>
+		<div class="row">
+			<div class="form-group col-xs-4">
+				<label for="workDate">Дата виходу: </label> <span id="workDate"
+					class="form-control">{{application.job.workDate|date:'yyyy-MM-dd'}}</span>
+			</div>
+			<div class="form-group col-xs-4">
+				<label for="salary">З.П. на випробувальний період: </label> <span
+					id="salary" class="form-control">{{application.job.salary}}</span>
+			</div>
 		</div>
-		<div class="form-group col-xs-4">
-			<label for="position">Посада: </label> <input id="position"
-				class="form-control" ng-model="application.job.position" type="text"
-				readonly>
-		</div>
-	</div>
-	<div class="row">
-		<div class="form-group col-xs-4">
-			<label for="workDate">Дата виходу: </label> <input id="workDate"
-				class="form-control" ng-model="application.job.workDate" type="Date" datepicker-popup="yyyy-MM-dd"
-				readonly>
-		</div>
-		<div class="form-group col-xs-4">
-			<label for="salary">З.П. на випробувальний період: </label> <input
-				id="salary" class="form-control" ng-model="application.job.salary"
-				type="text" readonly>
-		</div>
-	</div>
-
 </form>
