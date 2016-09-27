@@ -68,6 +68,7 @@
 			<label for="department">Департамент: </label> <select id="department"
 				class="form-control" ng-model="application.job.department"
 				ng-change="getUnitsAndPositions()">
+				<option value="--">--</option>
 				<option ng-repeat="ditem in departments" value="{{ditem.name}}">{{ditem.name}}</option>
 			</select>
 		</div>
@@ -76,6 +77,7 @@
 			<label for="unit">Відділ: </label> <select id="unit"
 				class="form-control" ng-model="application.job.unit"
 				ng-change="getPositions()">
+				<option value="--">--</option>
 				<option ng-repeat="uitem in units" value="{{uitem.name}}">{{uitem.name}}</option>
 			</select>
 		</div>
