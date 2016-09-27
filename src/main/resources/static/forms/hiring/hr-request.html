@@ -99,10 +99,8 @@
 
 	
     camForm.on('submit', function(e) {
-				console.log($scope.position);
         $scope.application.person.birthDate = new Date($scope.datePicker.birthDate);
         $scope.application.job.workDate = new Date($scope.datePicker.workDate);
-		console.log($scope.application);
     });
     
     </script>

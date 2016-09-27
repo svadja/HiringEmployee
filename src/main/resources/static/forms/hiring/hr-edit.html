@@ -1,6 +1,15 @@
 <form role="form">
 	<script cam-script type="text/form-script">
 
+	camForm.on('form-loaded', function() {
+    	camForm.variableManager.fetchVariable('application');
+    });
+	
+	camForm.on('variables-fetched', function() {
+    	$scope.application = camForm.variableManager.variableValue('application');
+  	});
+
+	//TODO: проинициювати ще тут щоб був вже список з якого виберуть що показувати
 	$scope.positions = [];
 	$scope.units = [];
 	$scope.departments = [];
@@ -30,25 +39,7 @@
     };	
 
 	
-	var application = $scope.application = {
-		person: {},
-		job:{
-		}
-	};
-
 	inject(['$http', 'Uri', function($http, Uri) {
-        camForm.on('form-loaded', function() {
-            camForm.variableManager.createVariable({
-                name: 'application',
-                type: 'Object',
-                value: application,
-                valueInfo: {
-                    serializationDataFormat: 'application/json',
-                    objectTypeName: 'ua.com.integrity.model.application.Application'
-                }
-            });
-        });
-		
 		$http({
             method: 'GET',
             url: '/api/departments',
