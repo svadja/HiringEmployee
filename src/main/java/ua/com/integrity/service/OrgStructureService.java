@@ -29,10 +29,9 @@ public class OrgStructureService {
 	}
 
 	
-	private List<Unit> getAllUnitsInDep(int depatmentId){
+	public List<Unit> getAllUnitsInDep(int depatmentId){
 		return (List<Unit>) orgStructureDao.getAllUnitInDep(depatmentId);
 	}
-
 	
 	public List<Position> getAllPositions() {
 		return (List<Position>) commonDao.getAll(Position.class);

@@ -66,19 +66,19 @@
 	<div class="row">
 		<div class="form-group col-xs-4">
 			<label for="department">Департамент: </label> <select id="department"
-				class="form-control" ng-model="application.job.department"
-				ng-change="getUnitsAndPositions()">
+				class="form-control" ng-model="depIndex"
+				ng-change="changeDepartment(depIndex)">
 				<option value="--">--</option>
-				<option ng-repeat="ditem in departments" value="{{ditem.name}}">{{ditem.name}}</option>
+				<option ng-repeat="ditem in departments" ng-value="$index">{{ditem.name}}</option>
 			</select>
 		</div>
 
 		<div class="form-group col-xs-4">
 			<label for="unit">Відділ: </label> <select id="unit"
-				class="form-control" ng-model="application.job.unit"
-				ng-change="getPositions()">
+				class="form-control" ng-model="unitIndex"
+				ng-change="changeUnit(unitIndex)">
 				<option value="--">--</option>
-				<option ng-repeat="uitem in units" value="{{uitem.name}}">{{uitem.name}}</option>
+				<option ng-repeat="uitem in units" ng-value="$index">{{uitem.name}}</option>
 			</select>
 		</div>
 

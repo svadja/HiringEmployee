@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,17 +29,36 @@ public class CamundaRestController {
         return departments.stream().map((dep) -> new NameValuePair(dep.getName(), Integer.toString(dep.getId()))).collect(Collectors.toList()) ;
     }
 	
-    @RequestMapping(value = "/positions", method = RequestMethod.GET,  produces = "application/json")
-    public List<NameValuePair>  getPositions() {
-        List<Position> positions = orgStructureService.getAllPositions();
-        return positions.stream().map((dep) -> new NameValuePair(dep.getName(), Integer.toString(dep.getId()))).collect(Collectors.toList()) ;
-    }	
+    @RequestMapping(value = "/departments/{depId}/units", method = RequestMethod.GET,  produces = "application/json")
+    public List<NameValuePair>  getUnitsInDep(@PathVariable int depId) {
+    	List<Unit> units = orgStructureService.getAllUnitsInDep(depId);
+        return units.stream().map((unit) -> new NameValuePair(unit.getName(), Integer.toString(unit.getId()))).collect(Collectors.toList()) ;
+    }
+	
+    @RequestMapping(value = "/departments/{depId}/positions", method = RequestMethod.GET,  produces = "application/json")
+    public List<NameValuePair>  getPositionsInDep(@PathVariable int depId) {
+    	List<Position> positions = orgStructureService.getAllPositionsInDep(depId);
+        return positions.stream().map((position) -> new NameValuePair(position.getName(), Integer.toString(position.getId()))).collect(Collectors.toList()) ;
+    }
     
     @RequestMapping(value = "/units", method = RequestMethod.GET,  produces = "application/json")
     public List<NameValuePair>  getUnits() {
         List<Unit> units = orgStructureService.getAllUnits();
-        return units.stream().map((dep) -> new NameValuePair(dep.getName(), Integer.toString(dep.getId()))).collect(Collectors.toList()) ;
+        return units.stream().map((unit) -> new NameValuePair(unit.getName(), Integer.toString(unit.getId()))).collect(Collectors.toList()) ;
     }
+    
+    @RequestMapping(value = "/units/{unitId}/positions", method = RequestMethod.GET,  produces = "application/json")
+    public List<NameValuePair>  getPositionsInUnit(@PathVariable int unitId) {
+    	List<Position> positions = orgStructureService.getAllPositionsInUnit(unitId);
+        return positions.stream().map((position) -> new NameValuePair(position.getName(), Integer.toString(position.getId()))).collect(Collectors.toList()) ;
+    }
+    
+    @RequestMapping(value = "/positions", method = RequestMethod.GET,  produces = "application/json")
+    public List<NameValuePair>  getPositions() {
+        List<Position> positions = orgStructureService.getAllPositions();
+        return positions.stream().map((position) -> new NameValuePair(position.getName(), Integer.toString(position.getId()))).collect(Collectors.toList()) ;
+    }	
+    
     
     @RequestMapping(value = "/init", method = RequestMethod.GET,  produces = "application/json")
     public void addDepartment() {
